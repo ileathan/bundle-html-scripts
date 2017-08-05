@@ -4,8 +4,6 @@ Bundle and compress all scripts from any local or remote server's html file
 
 **As command line argument**
 ```bash
-bundle-html-scripts http://example.com/file.html
-// OR
 node /path/to/bundle-html-scripts.js http://example.com/file.html
 ```
 
@@ -27,7 +25,7 @@ Or to print verbose information `node ./bundle-html-scripts.js http://example.co
 
 # Instalation
 
-`npm install bundle-html-scripts` **||** `npm install -g bundle-html-scripts`
+`npm install bundle-html-scripts` **||** `npm install -g bundle-html-scripts` **||** `git clone` this repo.
 
 # Dependencies
 
