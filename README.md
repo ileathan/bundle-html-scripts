@@ -32,4 +32,4 @@ Or to print verbose information `node ./bundle-html-scripts.js http://example.co
 
 1.) request
 
-2.) uglify-js
+2.) uglify-es
