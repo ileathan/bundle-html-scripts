@@ -25,7 +25,8 @@ Or to print verbose information `node ./bundle-html-scripts.js http://example.co
 
 # Instalation
 
-`npm install bundle-html-scripts` **||** `npm install -g bundle-html-scripts` **||** `git clone` this repo.
+`npm install bundle-html-scripts` **||** `npm install -g bundle-html-scripts`  
+**||** `git clone https://github.com/ileathan/bundle-html-scripts && cd bundle-html-scripts && npm install`
 
 # Dependencies
 
