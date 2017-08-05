@@ -16,6 +16,8 @@ require('bundle-html-scripts')('http://example.com/file.html')
 
 Both commands above will create a file `./bundle.js` on success.
 
+There should be no problem parsing files with scripts inside comments, multiline included.
+
 On failure keep trying... after 10+ attempts open an issue including the link.
 
 # Instalation
