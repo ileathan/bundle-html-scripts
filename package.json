@@ -1,0 +1,28 @@
+{
+  "name": "bundle-html-scripts",
+  "version": "1.0.0",
+  "description": "Bundle and compress all the scripts in any remote or local html file.",
+  "main": "bundle-html-scripts.js",
+  "scripts": {
+    "test": "echo \"This package has no tests.\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ileathan/bundle-html-scripts.js.git"
+  },
+  "keywords": [
+    "bundle",
+    "html",
+    "scripts"
+  ],
+  "author": "leathan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ileathan/bundle-html-scripts.js/issues"
+  },
+  "homepage": "https://github.com/ileathan/bundle-html-scripts.js#readme",
+  "dependencies": {
+    "request": "^2.81.0",
+    "uglify-es": "^3.0.27"
+  }
+}
