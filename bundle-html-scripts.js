@@ -2,9 +2,9 @@
 // then minifies, and concatenates them into one file.
 // Author: leathan
 // License: MIT
-process.argv[2] && ExtractBundle(process.argv[2]);
+process.argv[2] && ExtractBundle(process.argv[2], process.argv[3] || null, process.argv[4] || null);
 module.exports = ExtractBundle;
-function ExtractBundle(file, verbose) {
+function ExtractBundle(file, skip, verbose) {
   const { minify } = require("uglify-es");
   const request = require('request')
   const fs = require('fs')
@@ -24,19 +24,21 @@ function ExtractBundle(file, verbose) {
     !data && !console.log("No data from link.") && process.exit(1)
     const sources = data.replace(/<!--[\s\S]*?-->/mg,'') // Remove comments
     .match(/<script[\s\S]*?src[\s\S]*?>[\s\S]*?<\/script>/mg)               // Match all 
-    .map(_=>_.match(/src\s*?=\s*?"(.*?)"/)[1]) // Return array of source locations.
-    sources.map((source, i, arr) => {
+    .map(_=>_.match(/src\s*=\s*"(.*)"/)[1]) // Return array of source locations.
+    for(let i = 0, l = sources.length; i < l; i++) {
+      source = sources[i];
+      if(skip.includes(source.slice(1))) { results[i] = ""; continue }
       const url = /\/\//.test(source) ? source : host + source;
-      (process.argv[3] || verbose) && !console.log("fetching " + url)
+      verbose && !console.log("fetching " + url)
       request(url, (err, res, body) => {
         results[i] = minify(body).code || {error: true}
         if(results[i].error) !console.log("Error parsing " + url) && process.exit(1)
-        if(++found === arr.length) {
+        if(++found === sources.length) {
           fs.writeFileSync('bundle.js', results.join(''))
           console.log('Saved output to ./bundle.js')
-          process.argv[2] && process.exit(0);
+          process.exit(0);
         }
       })
-    })
-  })
+    }
+ })
 }
