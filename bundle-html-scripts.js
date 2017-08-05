@@ -22,8 +22,8 @@ function ExtractBundle(file, verbose) {
 
   request(file, (_, __, data) => {
     !data && !console.log("No data from link.") && process.exit(1)
-    const sources = data.replace(/<!--.*-->/g,'') // Remove comments
-    .match(/<script[\s\S]*?>[\s\S]*<\/script>/mg)               // Get all lines with scripts
+    const sources = data.replace(/<!--[\s\S]*?-->/mg,'') // Remove comments
+    .match(/<script.*?>.*<\/script>/g)               // Get all lines with scripts
     .map(_=>_.match(/src\s*=\s*"(.*)"/)[1]) // Return array of source locations.
     sources.map((source, i, arr) => {
       const url = /\/\//.test(source) ? source : host + source;
