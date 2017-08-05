@@ -3,7 +3,7 @@
 Bundle and compress all scripts from any local or remote server's html file
 
 **As command line argument**
-```javascript
+```bash
 bundle-html-scripts http://example.com/file.html
 // OR
 /path/to/bundle-html-scripts.js http://example.com/file.html
