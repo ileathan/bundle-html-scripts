@@ -5,17 +5,17 @@
 process.argv[2] && ExtractBundle(process.argv[2]);
 module.exports = ExtractBundle;
 function ExtractBundle(file, verbose) {
-  !file && !console.log("Provide a link.") && process.exit(1)
   const { minify } = require("uglify-es");
   const request = require('request')
   const fs = require('fs')
-  const host = /(.*)\//.exec(file)[1];
+  host = /(.*)\//.exec(file)[1];
+  !file && !console.log("Provide a link.") && process.exit(1)
 
   const results = [];
   var found = 0;
 
-  // If their is no new data found in 15 seconds, atleast 1 server hung,
-  // so if lastfound(15 seconds ago) === found(nowish) exit.
+  // Probably wasted my time with this one, but if their is no new data found in 15 seconds,
+  // atleast 1 server hung, so check and exit if lastfound(15 seconds ago) === found(nowish).
   (function forever(lastfound) {
     setTimeout(()=>{ if(found === lastfound) !console.log("Atleast 1 server hung.") && process.exit(1); else forever(found) }, 15000)
   })();
@@ -34,7 +34,7 @@ function ExtractBundle(file, verbose) {
         if(++found === arr.length) {
           fs.writeFileSync('bundle.js', results.join(''))
           console.log('Saved output to ./bundle.js')
-          process.exit(0);
+          process.argv[2] && process.exit(0);
         }
       })
     })
