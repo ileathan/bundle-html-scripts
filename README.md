@@ -15,6 +15,7 @@ require('bundle-html-scripts')('http://example.com/file.html')
 ```
 
 Both commands above will create a file `./bundle.js` on success.
+
 On failure keep trying... after 10+ attempts open an issue including the link.
 
 # Instalation
@@ -24,4 +25,5 @@ On failure keep trying... after 10+ attempts open an issue including the link.
 # Dependencies
 
 1.) request
+
 2.) uglify-js
