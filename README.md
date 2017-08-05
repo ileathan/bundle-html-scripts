@@ -23,7 +23,7 @@ On failure keep trying... after 10+ attempts open an issue including the link.
 Two parameters may be passed to the script, `skip` and `verbose`, an array of scripts to skip, and a boolean.   
 For example to skip compiling bundle.js and bar.js you can use    
 ```node ./bundle-html-scripts.js http://example.com/file.html "['bundle.js','bar.js']"```     
-Or to print verbose information `node ./bundle-html-scripts.js http://example.com/file.html true`
+Or to print verbose information `node ./bundle-html-scripts.js http://example.com/file.html "[]" true`
 
 # Instalation
 
