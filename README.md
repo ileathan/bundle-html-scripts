@@ -30,7 +30,7 @@ Or to print verbose information `node ./bundle-html-scripts.js http://example.co
 
 # Dependencies
 
-0.) NodeJS see http://nvm.sh to install
+0.) NodeJS see http://nvm.sh to install the latest and greatest.
 
 1.) request
 
