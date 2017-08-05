@@ -30,6 +30,8 @@ Or to print verbose information `node ./bundle-html-scripts.js http://example.co
 
 # Dependencies
 
+0.) NodeJS see http://nvm.sh to install
+
 1.) request
 
 2.) uglify-es
