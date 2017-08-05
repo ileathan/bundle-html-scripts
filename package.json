@@ -1,6 +1,6 @@
 {
   "name": "bundle-html-scripts",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "Bundle and compress all the scripts in any remote or local html file.",
   "main": "bundle-html-scripts.js",
   "scripts": {
