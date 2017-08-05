@@ -2,7 +2,6 @@
 // then minifies, and concatenates them into one file.
 // Author: leathan
 // License: MIT
-console.log(process.argv[3])
 process.argv[2] && ExtractBundle(process.argv[2], process.argv[3] || null, process.argv[4] || null);
 module.exports = ExtractBundle;
 function ExtractBundle(file, skip, verbose) {
