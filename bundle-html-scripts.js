@@ -14,8 +14,8 @@ function ExtractBundle(file, skip, verbose) {
   const results = [];
   var found = 0;
 
-  // Probably wasted my time with this one, but if their is no new data found in 15 seconds,
-  // atleast 1 server hung, so check and exit if lastfound(15 seconds ago) === found(nowish).
+  // If their is no new data found in 15 seconds, atleast one server hung
+  // so check if lastfound(15 seconds ago) === found(nowish) and exit if true.
   (function forever(lastfound) {
     setTimeout(()=>{ if(found === lastfound) !console.log("Atleast 1 server hung.") && process.exit(1); else forever(found) }, 15000)
   })();
@@ -23,7 +23,7 @@ function ExtractBundle(file, skip, verbose) {
   request(file, (_, __, data) => {
     !data && !console.log("No data from link.") && process.exit(1)
     const sources = data.replace(/<!--[\s\S]*?-->/mg,'') // Remove comments
-    .match(/<script[\s\S]*?src[\s\S]*?>[\s\S]*?<\/script>/mg)               // Match all 
+    .match(/<script[\s\S]*?src[\s\S]*?>[\s\S]*?<\/script>/mg) // Match all script tags
     .map(_=>_.match(/src\s*=\s*"(.*)"/)[1]) // Return array of source locations.
     for(let i = 0, l = sources.length; i < l; i++) {
       source = sources[i];
