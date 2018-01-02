@@ -15,7 +15,7 @@ function ExtractBundle(file, skip, verbose) {
   var found = 0;
 
   // If their is no new data found in 15 seconds, atleast one server hung
-  // so check if lastfound(15 seconds ago) === found(nowish) and exit if true.
+  // so check if lastfound(15 seconds ago) === found(nowish) exit.
   (function forever(lastfound) {
     setTimeout(()=>{ if(found === lastfound) !console.log("Atleast 1 server hung.") && process.exit(1); else forever(found) }, 15000)
   })();
