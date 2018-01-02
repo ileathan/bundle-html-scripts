@@ -11,7 +11,7 @@ function ExtractBundle(file, skip, verbose) {
   const fs = require('fs');
   host = /(.*)\//.exec(file)[1];
 
-  const results = [];
+  const minified = [], results = [];
   var found = 0;
 
   // If their is no new data found in 15 seconds, atleast one server hung
@@ -19,7 +19,7 @@ function ExtractBundle(file, skip, verbose) {
   (function forever(lastfound) {
     setTimeout(()=>{ if(found === lastfound) !console.log("Atleast 1 server hung.") && process.exit(1); else forever(found) }, 15000)
   })();
-
+  const obj = {};
   request(file, (_, __, data) => {
     !data && !console.log("No data from link.") && process.exit(1);
     const sources = data.replace(/<!--[\s\S]*?-->/mg,'') // Remove comments
@@ -30,16 +30,13 @@ function ExtractBundle(file, skip, verbose) {
       if((skip||[]).includes(source.slice(1))) { results[i] = ""; continue }
       const url = /\/\//.test(source) ? source : host + source;
       verbose && !console.log("fetching " + url);
-      const obj = {};
       request(url, (err, res, body) => {
-        obj[sources[i]] = body;
-        //results[i] = minify(body).code || {error: true};
-        //if(results[i].error) !console.log("Error parsing " + url) && process.exit(1);
+        results[i] = minify(body).code || {error: true};
+        minified[i] = minify(body, {mangle:false}).code
+        if(results[i].error) !console.log("Error parsing " + url) && process.exit(1);
         if(++found === sources.length) {
-          mangled = minify(obj);
-          minified =  minify(obj, {mangle: false});
-          fs.writeFileSync('bundle.min.js', minified);
-          fs.writeFileSync('bundle.mangled.js', minified);
+          fs.writeFileSync('bundle.min.js', minified.join(""));
+          fs.writeFileSync('bundle.mangled.js', results.join(""));
           console.log('Saved output to ./bundle.min.js and ./bundle.mangled.js');
           process.exit(0);
         }
