@@ -30,12 +30,17 @@ function ExtractBundle(file, skip, verbose) {
       if((skip||[]).includes(source.slice(1))) { results[i] = ""; continue }
       const url = /\/\//.test(source) ? source : host + source;
       verbose && !console.log("fetching " + url);
+      const obj = {};
       request(url, (err, res, body) => {
-        results[i] = minify(body).code || {error: true};
-        if(results[i].error) !console.log("Error parsing " + url) && process.exit(1);
+        obj[sources[i]] = body;
+        //results[i] = minify(body).code || {error: true};
+        //if(results[i].error) !console.log("Error parsing " + url) && process.exit(1);
         if(++found === sources.length) {
-          fs.writeFileSync('bundle.js', results.join(''));
-          console.log('Saved output to ./bundle.js');
+          mangled = minify(obj);
+          minified =  minify(obj, {mangle: false});
+          fs.writeFileSync('bundle.min.js', minified);
+          fs.writeFileSync('bundle.mangled.js', minified);
+          console.log('Saved output to ./bundle.min.js and ./bundle.mangled.js');
           process.exit(0);
         }
       })
