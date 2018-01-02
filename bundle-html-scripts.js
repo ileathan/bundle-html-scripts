@@ -27,7 +27,7 @@ function ExtractBundle(file, skip, verbose) {
     .map(_=>_.match(/src\s*=\s*"(.*)"/)[1]); // Return array of source locations.
     for(let i = 0, l = sources.length; i < l; i++) {
       source = sources[i];
-      if(skip.includes(source.slice(1))) { results[i] = ""; continue }
+      if((skip||[]).includes(source.slice(1))) { results[i] = ""; continue }
       const url = /\/\//.test(source) ? source : host + source;
       verbose && !console.log("fetching " + url);
       request(url, (err, res, body) => {
