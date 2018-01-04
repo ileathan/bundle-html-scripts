@@ -41,4 +41,4 @@ Or to print verbose information `node ./bundle-html-scripts.js http://example.co
 
 P.S.
 
-_(This is a hack, it works for my needs, if it doesn't work for you give a donation and I'll ensure it does No hack.)_
+_(This is a hack, it works for my needs, if it doesn't work for you give a donation and I'll ensure it does.)_
