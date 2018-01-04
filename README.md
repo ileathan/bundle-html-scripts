@@ -1,7 +1,6 @@
 # bundle-html-scripts
 
-Bundle and compress all scripts from any local or remote server's html file
-
+Bundle and compress all scripts from any local or remote server's html file (This is just a hack, it works for my needs, if it does not work for you for a donation I will ensure it does, with legit code.
 **As command line argument**
 ```bash
 node /path/to/bundle-html-scripts.js http://example.com/file.html
