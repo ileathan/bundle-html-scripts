@@ -2,7 +2,7 @@
 
 Bundle and compress all scripts from any local or remote server's html file 
 
-![Image of coloring](https://thumb.ibb.co/bUp8NG/image.png)
+![Image of coloring](https://image.ibb.co/fWHHGb/image.png[)
 
 **As command line argument**
 ```bash
