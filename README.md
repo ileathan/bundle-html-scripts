@@ -2,7 +2,7 @@
 
 Bundle and compress all scripts from any local or remote server's html file 
 
-_(This is a hack, it works for my needs, if it doesn't work for give a donation and I'll ensure it does No hack.)_
+![Image of coloring](https://thumb.ibb.co/bUp8NG/image.png)
 
 **As command line argument**
 ```bash
@@ -37,3 +37,8 @@ Or to print verbose information `node ./bundle-html-scripts.js http://example.co
 1.) request
 
 2.) uglify-es
+
+
+P.S.
+
+_(This is a hack, it works for my needs, if it doesn't work for give a donation and I'll ensure it does No hack.)_
