@@ -12,7 +12,7 @@ node /path/to/bundle-html-scripts.js http://example.com/file.html
 require('bundle-html-scripts')('http://example.com/file.html')
 ```
 
-Both commands above will create a file `./bundle.js` on success.   
+Both commands above will create a file `./bundle.min.js` and a `./bundle.mangle.js` on success.   
 There should be no problem parsing files with scripts inside comments, multiline included.   
 On failure keep trying... after 10+ attempts open an issue including the link.
 
